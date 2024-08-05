@@ -50,3 +50,19 @@ node index.js
 - Deploy the backend and frontend from the remote registry (I use ttl.sh but any other registry can be used of course) with manifest files
 
 - That's it
+
+
+
+### Questions about CI/CD, Metrics, Logging
+
+1. **CI/CD**
+   - It depends on the amount of microservices and requirements from the dev/product guys. If there are no any special requirements, any project for CI/CD can be used like Jenkins. If there are some special requirements for CI/CD I can write the pipeline myself with Node.js + Bash scripts. Usually most engineers are scared to write any code but I have huge experience in development for mobile devices and web so I don't see any issues to write some code
+
+2. **Metrics**:
+   - Again depends on requirements what kind of metrics you want to collect - for perfomance metrics it can be Datadog, for costs - depends on a cloud provider / providers, for security (like DDOS attacks mitigating ) Prometheus and maybe Cloudflare
+
+3. **Logging**:
+   - Here Elasticsearch or Loggly can be used, or even own solution with pushing logs to high perfomance databases like ClickHouse
+
+4. **Monitoring**:
+   - Install Prometeus with Grafana
