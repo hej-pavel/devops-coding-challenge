@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    environment: production
+    com.app.service: backend
+  name: backend
+  namespace: app-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      com.app.service: backend
+  template:
+    metadata:
+      labels:
+        com.app.service: backend
+    spec:
+      containers:
+        - env:
+            - name: PORT
+              value: "8080"
+            - name: FRONTEND_HOST
+              value: localhost:3000
+          image: ttl.sh/backend_devops_test_project:1h
+          name: backend
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    environment: production
+    com.app.service: frontend
+  name: frontend
+  namespace: app-production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      com.app.service: frontend
+  template:
+    metadata:
+      labels:
+        com.app.service: frontend
+    spec:
+      containers:
+        - image: ttl.sh/frontend_devops_test_project:1h
+          name: frontend
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
